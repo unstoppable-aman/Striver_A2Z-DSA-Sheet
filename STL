@@ -1,0 +1,936 @@
+//Check pdf in STL folder in any doubt or search on internet.
+//Otherwise revise from this file only as it is successfully running
+//in ide.
+//*****But check  ideone cpp file in STL folder such that No
+//functions get left by you which are not there in below code*********.
+
+
+
+#include<iostream>
+#include<iterator>
+#include<array>
+#include<vector>
+#include<set>
+#include<unordered_set>
+#include<map>
+#include<unordered_map>
+#include<stack>
+#include<queue>
+#include<list>
+#include<bitset>
+#include<numeric>
+
+using namespace std;
+
+bool comp(int ele1,int ele2)
+{
+    if(ele1>=ele2)
+        return true;
+    else
+        return false;
+}
+
+bool comp1(pair<int,int> p1,pair<int,int> p2)
+{
+if(p1.first<p2.first)
+{
+    return true;
+}
+else if(p1.first==p2.first)
+{
+    if(p1.second>p2.second)
+        return true;
+    else
+        return false;
+}
+    return false;
+}
+
+
+int main()
+{
+    //*******Array Container***********
+    /*
+    array<int,5> arr;
+    arr.fill(69);
+    for(int i=0;i<5;i++)
+        cout<<arr.at(i)<<" ";
+    cout<<endl;
+    arr={1,2,3,4,5};
+    
+    //Iterators
+    //1.Descriptive method
+    array<int,5>::iterator itr;
+    for(itr=arr.begin();itr!=arr.end();itr++)
+        cout<<*itr<<" ";
+    cout<<endl;
+    
+    array<int,5>::reverse_iterator r_itr;
+    for(r_itr=arr.rbegin();r_itr!=arr.rend();r_itr++)
+        cout<<*r_itr<<" ";
+    cout<<endl;
+    //2.Direct method
+    for (auto it=arr.begin(); it!=arr.end(); it++) {
+        cout<<*it<<" ";
+    }
+    cout<<endl;
+    
+    for(auto it=arr.rbegin();it!=arr.rend();it++)
+        cout<<*it<<" ";
+    cout<<endl;
+    
+    //Functions
+    //arr_name.size()
+    //arr_name.front()
+    //arr_name.back()
+    
+    cout<<"Array size: "<<arr.size()<<endl;
+    cout<<"Array front element: "<<arr.front()<<endl;
+    cout<<"Array last element: "<<arr.back()<<endl;
+    
+     */
+    
+    //********VECTOR*********
+    
+    /*
+    vector<int> vec;
+    vec.push_back(2);
+    cout<<"Vector size: "<<vec.size()<<endl;
+    vec.emplace_back(3);
+    cout<<"Vector size: "<<vec.size()<<endl;
+    vec.push_back(5);
+    cout<<"Vector size: "<<vec.size()<<endl;
+    vec.push_back(69);
+    cout<<"Vector size: "<<vec.size()<<endl;
+    vec.pop_back();
+    cout<<"Vector size: "<<vec.size()<<endl;
+    vec.pop_back();
+    cout<<"Vector size: "<<vec.size()<<endl;
+    
+    vec.push_back(12);
+    vec.push_back(21);
+    vec.push_back(34);
+    vec.push_back(42);
+    
+    for(auto it=vec.begin();it!=vec.end();it++)
+        cout<<*it<<" ";
+    cout<<endl;
+    
+    vec.clear();
+    cout<<"Vector Size after using clear() : "<<vec.size()<<endl;
+    
+    vector<int> vec1(6,69);
+    for(auto it=vec1.begin();it!=vec1.end();it++)
+        cout<<*it<<" ";
+    cout<<endl;
+    vec1.emplace_back(23);
+    vec1.emplace_back(92);
+    for(auto it=vec1.begin();it!=vec1.end();it++)
+        cout<<*it<<" ";
+    cout<<endl;
+    for(int i=0;i<vec1.size();i++)
+    {
+        vec1[i]=i+1;
+        cout<<vec1[i]<<" ";
+    }
+    cout<<endl;
+    
+    vector<int> vec2(vec1);
+    for(auto it:vec2)
+        cout<<it<<" ";
+    cout<<endl;
+    vector<int> swap_vec1={2,4,6,8,24,69};
+    vector<int> swap_vec2={1,3,5,7};
+    swap_vec1.swap(swap_vec2);
+    cout<<"After swapping: ";
+    for(auto it:swap_vec1)
+        cout<<it<<" ";
+    cout<<endl;
+    for(auto it:swap_vec2)
+        cout<<it<<" ";
+    cout<<endl;
+
+    
+    //2D Vector
+    vector<vector<int>> vec3;
+    vector<int> inside_vec1{24,9,2001};
+    vector<int> inside_vec2{30,9,2001};
+    vector<int> inside_vec3{6,7,8,9};
+    
+    vec3.push_back(inside_vec1);
+    vec3.push_back(inside_vec2);
+    vec3.push_back(inside_vec3);
+    
+    for(auto it:vec3)
+    {
+        for(auto inside_it:it)
+            cout<<inside_it<<" ";
+        cout<<endl;
+    }
+    
+    //3D Vector
+    vector<vector<vector<int>>> vec4;
+    vector<vector<int>> inside_3dvec1;
+    vector<int> inside_2dvec1{24,9,2001};
+    vector<int> inside_2dvec2{30,9,2001};
+    vector<int> inside_2dvec3{1,2,3,4,5};
+    inside_3dvec1.emplace_back(inside_2dvec1);
+    inside_3dvec1.emplace_back(inside_2dvec2);
+    inside_3dvec1.emplace_back(inside_2dvec3);
+    
+    vector<vector<int>> inside_3dvec2;
+    vector<int> inside_2dvec4{1,3,5};
+    vector<int> inside_2dvec5{7,9,11};
+    vector<int> inside_2dvec6{13,15};
+    inside_3dvec2.emplace_back(inside_2dvec4);
+    inside_3dvec2.emplace_back(inside_2dvec5);
+    inside_3dvec2.emplace_back(inside_2dvec6);
+    
+    vector<vector<int>> inside_3dvec3;
+    vector<int> inside_2dvec7{2,4,6,8};
+    vector<int> inside_2dvec8{10,12};
+    inside_3dvec2.emplace_back(inside_2dvec7);
+    inside_3dvec2.emplace_back(inside_2dvec8);
+    
+    vec4.push_back(inside_3dvec1);
+    vec4.push_back(inside_3dvec2);
+    vec4.push_back(inside_3dvec3);
+    cout<<"***3D Vecctor***"<<endl;
+    for(auto _3d_vec_ptr:vec4)
+    {
+        for(auto _2d_vec_ptr:_3d_vec_ptr)
+        {
+            for(auto _1d_vec_ptr:_2d_vec_ptr)
+                cout<<_1d_vec_ptr<<" ";
+            cout<<endl;
+        }
+    }
+     */
+     
+    
+    //******SET(ordered and unordered),Multiset********
+    
+    /*
+    
+    //Ordered Set: 1.In Ascending order 2.No duplicate elements
+    set<int> st;
+    st.emplace(7);
+    st.insert(9);
+    st.insert(5);
+    st.insert(3);
+    st.insert(7);
+    
+    cout<<"Set Size: "<<st.size()<<endl;
+    for(auto it:st)
+        cout<<it<<" ";
+    cout<<endl;
+    
+    st.erase(st.begin());
+    cout<<"After erasing beggining element\n";
+    for(auto it:st)
+        cout<<it<<" ";
+    cout<<endl;
+    st.emplace(3);
+    st.emplace(4);
+    st.emplace(2);
+    set<int>::iterator it1,it2;
+    it1=st.begin();
+    it2=st.begin();
+    
+    it1++;//st.begin()+1
+    it2++;
+    it2++;
+    it2++;
+    it2++;//st.begin() + 4
+    st.erase(it1, it2);
+    for(auto it:st)
+        cout<<it<<" ";
+    cout<<endl;
+    
+    
+    //Unordered Set: 1.Any Order 2.But only unique elements
+    unordered_set<int> ust;
+    ust.emplace(7);
+    ust.insert(9);
+    ust.insert(5);
+    ust.insert(3);
+    ust.insert(7);
+    for(auto it:ust)
+        cout<<it<<" ";
+    cout<<endl;
+    
+    //Multiset: 1.Ascending Order 2.Duplicate Elements are Allowed
+    multiset<int> ms;
+    ms.emplace(7);
+    ms.insert(9);
+    ms.insert(5);
+    ms.insert(3);
+    ms.insert(7);
+    ms.insert(10);
+    ms.insert(7);
+    for(auto it:ms)
+        cout<<it<<" ";
+    cout<<endl;
+    
+    */
+    
+    //********Map and Pair********
+    
+    /*
+    
+    map<int,string> mp;
+    //1.Ordered A/C to Keys in ascending order.
+    //2.All unique keys if there are more than one value for  same key
+    //then the old value on that key gets overwrited.
+    //First way of adding elements.
+    
+    mp[14]="Akshat Gupta";
+    mp[15]="Aman Kumar Dwivedi";
+    mp[19]="Anant";
+    mp[8]="Aditya Kumar";
+    mp[10]="Aditya Yadav";
+    
+    //Second way of adding elements.
+    
+    mp.insert({39,"Garvita"});
+    mp.insert({41,"Haram"});
+    mp.emplace(27,"Anmol");
+    mp.emplace(31,"Ashish");
+    
+    for(auto it:mp)
+        cout<<it.first<<" "<<it.second<<endl;
+    cout<<endl;
+    
+    mp.clear();
+    
+    if(mp.empty())
+        cout<<"Map is empty."<<endl;
+    
+    //Unordered Map
+    //1.Stores in Any Order
+    //2.All unique keys if there are more than one value for  same key
+    //then the old value on that key gets overwrited.
+    //First way of adding elements.
+    
+    unordered_map<int,string> ump;
+    ump[14]="Akshat Gupta";
+    ump[15]="Aman Kumar Dwivedi";
+    ump[19]="Anant";
+    ump[8]="Aditya Kumar";
+    ump[10]="Aditya Yadav";
+    for(auto it:ump)
+        cout<<it.first<<" "<<it.second<<endl;
+    cout<<endl;
+    
+    //Multimap
+    //1.Ordered A/C to Keys in ascending order.
+    //2.Allows to Store values with the same key
+    //i.e, Same keys Are Allowed.
+    multimap<int,string> mmp;
+    
+    mmp.emplace(27,"Anmol");
+    mmp.emplace(31,"Ashish");
+    mmp.insert({15,"Garvita"});
+    mmp.insert({14,"Haram"});
+    mmp.insert({14,"Aman kumar Dwivedi"});
+    mmp.insert({14,"Akshat Gupta"});
+    mmp.insert({14,"Akshat Gupta"});
+    mmp.insert({14,"Akshat Gupta"});
+    for(auto it:mmp)
+        cout<<it.first<<" "<<it.second<<endl;
+    cout<<endl;
+    
+    //Pair
+    
+    //pair<int,int> p;
+    vector<pair<int,string>> pvec;
+    pvec.push_back({14,"Akshat Gupta"});
+    pvec.push_back({19,"Anant Raj"});
+    pvec.push_back({15,"Aman Kumar Dwivedi"});
+    for(auto it:pvec)
+        cout<<it.first<<" "<<it.second<<endl;
+    
+    pair< pair<int,int>, int> pr = {{1,2}, 9};
+    cout << pr.first.second << endl;
+    cout << pr.first.first << endl;
+    cout<<pr.second<<endl;
+    
+    */
+    
+    //*****Stack and Queue*****
+    
+    /*
+     
+    stack<int> st; // lifo ds
+    // pop
+    // top
+    // size
+    // empty
+    // push and emplace
+    
+    st.push(2);
+    st.push(4);
+    st.push(3);
+    st.push(1);
+    
+    stack<int> st_copy(st);
+    while(!st_copy.empty())
+    {
+        cout<<st_copy.top()<<" ";
+        st_copy.pop();
+    }
+    cout<<endl;
+    
+    // queue // fifo operation ds
+    // push
+    // front
+    // pop
+    // size
+    // empty
+    
+    queue<int> q;
+    q.push(1);
+    q.push(5);
+    q.push(3);
+    q.push(6);
+    
+    while(!q.empty())
+    {
+        cout<<q.front()<<" ";
+        q.pop();
+    }
+    cout<<endl;
+    
+    //Priority Queue:Stores element in Decreasing Order
+    // push
+    // size
+    // top pop empty
+    priority_queue<int> pq;
+    pq.push(1);
+    pq.push(6);
+    pq.push(2);
+    pq.push(-2);
+    pq.push(6);
+    pq.push(8);
+    pq.push(-1);
+    
+    while(!pq.empty())
+    {
+        cout<<pq.top()<<" ";
+        pq.pop();
+        
+    }
+    cout<<endl;
+    
+    // min priority queue is
+    priority_queue<int, vector<int>, greater<int>> pq1;
+    pq1.push(1);
+    pq1.push(5);
+    pq1.push(2);
+    pq1.push(6);
+    
+    while(!pq1.empty())
+    {
+        cout<<pq1.top()<<" ";
+        pq1.pop();
+        
+    }
+    cout<<endl;
+    
+    priority_queue<pair<string,int>> pq2;
+    pq2.push({"Aman Kumar Dwivedi", 15});
+    pq2.push({"Zain Malik", 13});
+    pq2.push({"Akshat Gupta", 14});
+    pq2.push({"Akshat Gupta", 16});
+    while(!pq2.empty())
+    {
+        cout<<pq2.top().first<<" "<<pq2.top().second<<endl;
+        pq2.pop();
+        
+    }
+    cout<<endl;
+    
+    */
+    
+    //******deque*******
+    
+    /*
+    
+    deque<int> dq;
+    // push_front()
+    // push_back()
+    // pop_front()
+    // pop_back()
+    // begin, end, rbegin, rend
+    // size
+    // clear
+    // empty
+    // at
+    
+    dq.push_front(1);
+    dq.push_back(4);
+    dq.push_front(9);
+    dq.push_back(5);
+    dq.push_front(2);
+    
+    cout<<"Forward Traverse"<<endl;
+    while(!dq.empty())
+    {
+        cout<<dq.front()<<" ";
+        dq.pop_front();
+    }
+    cout<<endl;
+    dq.push_front(1);
+    dq.push_back(4);
+    dq.push_front(9);
+    dq.push_back(5);
+    dq.push_front(2);
+    cout<<"Backward Traverse"<<endl;
+    while(!dq.empty())
+    {
+        cout<<dq.back()<<" ";
+        dq.pop_back();
+    }
+    cout<<endl;
+    
+    */
+    
+    //******list*******
+    
+    /*
+    
+    list<int> ls;
+    // push_front()
+    // push_back()
+    // pop_front()
+    // pop_back()
+    // begin, end, rbegin, rend
+    // size
+    // clear
+    // empty
+    // at
+    // remove -> O(1)
+    ls.push_front(1);
+    ls.push_front(3);
+    ls.push_front(4);
+    ls.push_front(2);
+    
+    while(!ls.empty())
+    {
+        cout<<ls.front()<<" ";
+        ls.pop_front();
+    }
+    cout<<endl;
+    
+    ls.remove(2);
+    */
+    
+    //****Some Questions*****
+    
+    // Q1. given N elements, print the elements that occurs maximum
+    // number of times
+    // input
+    // 5
+    // 1 3 3 3 2
+    // output
+    // 3
+     
+    /*
+       int n ;
+       cin>>n;
+       int a[n];
+       int max =0;
+       int max_ele=0;
+       unordered_map<int,int>mp;
+       for(int i= 0 ;i<n;++i)
+       {
+           cin>>a[i];
+       }
+       for(int i= 0 ;i<n;++i)
+       {
+           mp[a[i]]++;
+       }
+       for(auto pr : mp)
+       {
+           if(pr.second > max)
+           {
+               max = pr.second;
+               max_ele=pr.first;
+           }
+       }
+       cout<<max_ele<<endl;
+       
+   */
+    
+    // Q2. given N elements, print all elements in sorted order
+    // input
+    // n = 6
+    /// 6 6 3 2 3 5
+
+    // output
+    // 2 3 3 5 6 6
+   
+    /*
+    
+    int n1;
+    cin>>n1;
+    multiset<int> mst;
+    for(int i=0;i<n1;i++)
+    {
+        int x;
+        cin>>x;
+        mst.insert(x);
+    }
+    
+    for(auto it:mst)
+        cout<<it<<" ";
+    cout<<endl;
+    
+     */
+    
+    
+    //******Bitset*******
+    
+    /*
+    
+    bitset<5> bt;
+    cin>>bt;
+    
+    //Functions
+    //bt.set(),bt.set(index),bt.set(index,0 or 1)
+    //bt.none()
+    //bt.all()
+    //bt.any()
+    //bt.count()
+    //bt.flip(index)
+    //bt.reset()
+    //bt.test()
+    
+    
+    cout<<bt.set(3)<<endl;//4th_bit  3rd_bit 2nd_bit 1st_bit 0th_bit
+    cout<<bt.set()<<endl;
+    cout<<bt.set(4,0)<<endl;
+    
+    bt.reset();
+    cout<<bt.none()<<endl;
+    
+    cout<<bt.size()<<endl;
+    bt.set();
+    cout<<bt.all()<<endl;
+    bt.reset();
+    bt.set(2);
+    bt.set(4);
+    cout<<bt.any()<<endl;
+    cout<<bt.count()<<endl;
+    
+    cout<<bt.flip()<<endl;
+    cout<<bt.flip(4)<<endl;
+    
+    cout<<bt.test(2)<<endl;
+    cout<<bt.test(3)<<endl;
+    
+    */
+    
+    //******Algorithms*****
+    // sorting
+    // array, vector
+    
+    /*
+    
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+    sort(arr+1,arr+n);
+    for(int i=0;i<n;i++)
+        cout<<arr[i]<<" ";
+    cout<<endl;
+    
+    vector<int> vec={1,6,7,2,7,4,7};
+    sort(vec.begin()+2,vec.begin()+5);
+    for(auto it:vec)
+        cout<<it<<" ";
+    cout<<endl;
+    
+    // If I wanna reverse
+    // reverse(startIterator, endIterator) -> [)
+    //reverse(arr, arr+n);
+
+    reverse(arr + 1, arr + 4);
+    for(int i=0;i<n;i++)
+        cout<<arr[i]<<" ";
+    cout<<endl;
+
+    //reverse(vec.begin(), vec.end());
+
+    reverse(vec.begin() + 1, vec.begin() + 4);
+    for(auto it:vec)
+        cout<<it<<" ";
+    cout<<endl;
+    
+    //Maximum and Minimum Element
+    
+    int el = *max_element(arr, arr+n);
+    int el1 = *min_element(arr, arr+n);
+    cout<<"Maximum: "<<el<<endl;
+    cout<<"Minimum: "<<el1<<endl;
+
+    int el2 = *max_element(vec.begin(), vec.end());
+    int el3 = *min_element(vec.begin(), vec.end());
+    cout<<"Maximum: "<<el2<<endl;
+    cout<<"Minimum: "<<el3<<endl;
+    
+    // I give you a range and I want you to find the sum in that range
+    // i - j, tell me the sum in that range i to j
+    
+    // accumulate(startIterator, endIterator, initialSum);
+    int sum_arr = accumulate(arr,arr+n,0);
+    int sum_vec = accumulate(vec.begin(),vec.end(),0);
+    cout<<sum_arr<<endl;
+    cout<<sum_vec<<endl;
+    
+    
+    
+    // arr[] -> [1, 6, 7, 1, 2, 1, 3]
+    // x = 1
+    // tell me how many times the element 1 occurs in the array
+    
+    int _arr[7]={1, 6, 7, 1, 2, 1, 3};
+    // count(firstIterator, lastIterator, x)
+    cout<<count(_arr,_arr+7,1)<<endl;
+    cout<<count(vec.begin(),vec.end(),7)<<endl;
+    // arr[] -> {1, 6, 7, 1, 2, 1, 3}
+    // i want you to find the first occurrence of 2
+    // it is in the index 1
+    
+    auto it=find(_arr,_arr+7,2);// return an iterator
+    // pointing to the first instance of it, or else it
+    // returns pointing to the end() if it is not there.
+    long int index = it-_arr;
+    cout<<index<<endl;
+    
+    auto it1=find(vec.begin(),vec.end(),7);
+    long int index_vec=it1-vec.begin();
+    cout<<index_vec<<endl;
+    
+    
+    // binary search
+    // this stl only works on SORTED arrrays
+    // arr[] -> {1, 5, 7, 9, 10}
+    // x = 5
+    // true -> 5 exists in my arr
+    // x = 8
+    // false -> 8 does not exist in my arr
+
+
+    // binary_search(firstIterator, lastIterator, x)
+    // returns a true or returns a false
+    // works in log n complexity
+    
+    int sorted_arr[5]={1, 5, 7, 9, 10};
+    vector<int> sorted_vec={2,4,6,8};
+    bool res_arr=binary_search(sorted_arr,sorted_arr+5,5);
+    bool res_vec=binary_search(sorted_vec.begin(),sorted_vec.end(),6);
+    cout<<res_arr<<endl;
+    cout<<res_vec<<endl;
+    
+    // lower_bound function
+    //this stl only works on SORTED arrrays
+    // returns an iterator pointing to the first
+    // element which is not less than x
+    // arr[] -> {1, 5, 7, 7, 8, 10, 10, 10, 11, 11, 12}
+    // x = 10
+    // x = 6
+    // x = 13
+    // this works in log N
+    
+    int l_arr[]={1, 5, 7, 7, 8, 10, 10, 10, 11, 11, 12};
+    n=sizeof(l_arr)/sizeof(l_arr[0]);
+    auto it_l = lower_bound(l_arr, l_arr+n, 11);
+    long int ind = it_l - l_arr;
+    
+    cout<<"Lower Bound Index: Array->"<<ind<<endl;
+    
+    vector<int> l_vec={1, 5, 7, 7, 8, 10, 10, 10, 11, 11, 12};
+    auto v_it = lower_bound(l_vec.begin(), l_vec.end(), 11);
+    ind = v_it - l_vec.begin();
+
+//long int v_ind =  lower_bound(vec.begin(), vec.end(), 11) - vec.begin();
+    cout<<"Lower Bound Index: Vector->"<<ind<<endl;
+    
+    // upper bound
+    //this stl only works on SORTED arrrays
+    // returns an iterator which points to an element which is
+    // just greater than x
+    // arr[] -> {1, 5, 7, 7, 8, 10, 10, 10, 11, 11, 12}
+    // x = 7
+    // x = 6
+    // x = 12 -> end() iterator
+    // x = 15 -> end() iterator
+
+    auto u_it = upper_bound(l_arr, l_arr+n, 5);
+    ind = u_it - l_arr;
+    cout<<"Upper Bound Index: Array->"<<ind<<endl;
+    auto uit_vec = upper_bound(l_vec.begin(),l_vec.end(), 5);
+    ind = uit_vec - l_vec.begin();
+    cout<<"Upper Bound Index: Vector->"<<ind<<endl;
+    //int ind =  upper_bound(vec.begin(), vec.end(), x) - vec.begin();
+    
+    */
+    
+    //***Some Questions***
+    
+    // Q1. find me the first index where the element X lies
+    // find function can be used but that takes O(N) times
+    // the array is sorted..
+    
+    /*
+    
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+    int x;
+    cin>>x;
+    long int index=lower_bound(arr,arr+n,x) - arr;
+     
+     */
+    /*
+    // arr[] -> {1, 5, 7, 7, 8, 10, 10, 10, 11, 11, 12}
+    // find x = 13 -> ind = 11, which is out of bound
+    // hence arr[11] will give you runtime error
+    if(index!=n && arr[index]==x)
+        cout<<"Element found at index: "<<index<<endl;
+    else cout<<"Element Cannot be found."<<endl;
+    
+    */
+    
+    
+    
+    //Q2. Find me the last occurrence of x in an arr
+    // arr[] -> {1, 5, 7, 7, 8, 10, 10, 10, 11, 11, 12}
+    ///index/////0  1  2  3  4  5   6   7   8   9   10
+
+    // last occurrence of x = 10, ans = 7th index
+    // last occurrence of x = 6, ans = does not exists
+    
+    /*
+    index=upper_bound(arr, arr+n, x) - arr;
+    index-=1;
+    if(index>=0 && arr[index] == x) {
+        cout << "last occurrence: " << index<<endl;
+    }
+    else {
+        cout << "Does not exists"<<endl;
+    }
+    
+    */
+    
+    // Q3. tell me the number of times the x appears in arr
+    // arr[] -> {1, 5, 7, 7, 8, 10, 10, 10, 11, 11, 12}
+    ///index/////0  1  2  3  4  5   6   7   8   9   10
+
+    // x = 10, ans = 3
+    // x = 7, ans = 2
+    
+    /*
+    long int occurences=upper_bound(arr,arr+n,x)-lower_bound(arr,arr+n,x);
+    cout<<"Total Occurences:"<<occurences<<endl;
+     
+    */
+    
+    
+    //****Next Permutation****
+    // string s = "abc"
+    // all permutations are as follows:
+
+    // abc
+    // acb
+    // bac
+    // bca
+    // cab
+    // cba
+    
+    /*
+    
+    string s="bca";
+    
+    bool res=next_permutation(s.begin(),s.end());
+    cout<<res<<" "<<s<<endl;
+    
+    // if I give you any random string s = "bcad"
+    // i want you to print all the permutations
+    //Total number of permutations n!
+    s = "bcad";
+    sort(s.begin(), s.end()); // this makes the string as "abc"
+    int i=1;
+    do {
+        cout<<i<<". "<< s <<endl;
+        i++;
+    } while(next_permutation(s.begin(), s.end()));
+    
+    cout<<endl;
+    
+    
+    int arr[] = {1, 6, 5};
+    int n = 3;
+    sort(arr, arr + n); // this makes the array as {1, 5, 6}
+    do {
+        for(int i = 0;i<n;i++) cout << arr[i] << " ";
+        cout << endl;
+    } while(next_permutation(arr, arr+n)) ;
+    
+    //prev permutation
+    s="bac";
+    res = prev_permutation(s.begin(), s.end());
+    cout<<res<<" "<<s<<endl;
+    
+    */
+    
+    //******COMPARATOR*****
+    
+    /*
+    
+    int arr[] = {1, 6, 5,3,9,6};
+    int n = 6;
+    //sort(arr, arr + n);:sorts everything in ascending order
+    // descending
+    sort(arr, arr+n, comp);
+    for(int i=0;i<n;i++)
+        cout<<arr[i]<<" ";
+    cout<<endl;
+     
+     */
+    
+    // greater<int> is an inbuilt comparator
+    // which works only if you wanna do this in descending
+    /*
+     sort(arr,arr+n,greater<int>());
+    for(int i=0;i<n;i++)
+       cout<<arr[i]<<" ";
+     */
+    
+    
+    //sort(arr, arr+n, greater<pair<int,int>>());
+    
+    // i want you to sort this in such a way
+    // that the element who have first element in pair smaller
+    // appears first, and if first is equal then sort according
+    // to second and keep the larger second
+    
+    /*
+    pair<int,int> arr1[] = {{1, 4},{5, 2},{5, 9}};
+    // after sorting arr[] = {{1, 4}, {5, 9}, {5, 2}}
+    
+    sort(arr1,arr1+3,comp1);
+    for(auto it:arr1)
+        cout<<it.first<<" "<<it.second<<endl;
+    
+     */
+    
+    
+    return 0;
+    
+}
