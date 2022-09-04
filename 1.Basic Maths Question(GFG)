@@ -1,0 +1,39 @@
+Given a number N. Count the number of digits in N which evenly divides N.
+ 
+
+Example 1:
+
+Input:
+N = 12
+Output:
+2
+Explanation:
+1, 2 both divide 12 evenly
+Example 2:
+
+Input:
+N = 23
+Output
+0
+Explanation:
+2 and 3, none of them
+divide 23 evenly
+
+
+PROGRAM:
+
+int evenlyDivides(int N){
+        int count=0;
+        int d=0;
+        int no=N;
+        while(N)
+        {
+            d=N%10;
+            if(d!=0 && no%d==0)//Checking d!=0 to prevent divide by 0 error.
+                count++;
+            N=N/10;
+            
+        }
+        return count;
+}
+        
