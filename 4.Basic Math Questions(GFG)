@@ -1,0 +1,62 @@
+Given two numbers A and B. The task is to find out their LCM and GCD.
+
+Example 1:
+
+Input:
+A = 5 , B = 10
+Output:
+10 5
+Explanation:
+LCM of 5 and 10 is 10, while
+thier GCD is 5.
+
+
+Example 2:
+
+Input:
+A = 14 , B = 8
+Output:
+56 2
+Explanation:
+LCM of 14 and 8 is 56, while
+thier GCD is 2.
+
+PROGRAM:
+
+ vector<long long> lcmAndGcd(long long A , long long B) {
+        vector<long long> vec;
+        long long lcm=1,copy_A=A,copy_B=B;
+        while(A!=B)
+        {
+            if(A>B)
+                A=A-B;
+            else if(B>A)
+                B=B-A;
+        }
+        
+        /*int i=2;
+        while(A!=1 || B!=1)
+        {   flag=0;
+            if(A%i==0)
+            {
+                flag=1;
+                A=A/i;
+            }
+            if(B%i==0)
+            {
+                flag=1;
+                B=B/i;
+            }
+            if(flag==1)
+            {
+                lcm*=i;
+            }
+            else
+                i++;
+        }*/
+        
+        lcm=copy_A*copy_B/A;
+        vec.push_back(lcm);
+        vec.push_back(A);
+        return vec;
+    }
