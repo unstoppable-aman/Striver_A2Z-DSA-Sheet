@@ -1,0 +1,76 @@
+Given a 32 bit number X, reverse its binary form and print the answer in decimal.
+
+Example 1:
+
+Input:
+X = 1
+Output:
+2147483648 
+Explanation:
+Binary of 1 in 32 bits representation-
+00000000000000000000000000000001
+Reversing the binary form we get, 
+10000000000000000000000000000000,
+whose decimal value is 2147483648.
+Example 2:
+
+Input:
+X = 5
+Output:
+2684354560 
+Explanation:
+Binary of 5 in 32 bits representation-
+00000000000000000000000000000101
+Reversing the binary form we get, 
+10100000000000000000000000000000,
+whose decimal value is 2684354560.
+
+Solution:
+  My Approach:
+      1.Decimal to Binary.
+      2.Reverse Binary Array.
+      3.Binary to decimal.
+      
+PROGRAM:
+
+
+long long Binary(long long X){
+    int arr_32[32]={0};
+    int i=31;
+    int d=0;
+    //1.Decimal to Binary
+    while(X)
+    {
+        
+        d=X%2;
+        arr_32[i]=d;
+        i--;
+        X=X/2;
+    }
+    int start=0;
+    int end=31;
+    //2.Reversing Binary Array
+    while(start<end)
+    {
+        int temp=arr_32[start];
+        arr_32[start]=arr_32[end];
+        arr_32[end]=temp;
+        start++;
+        end--;
+    }
+    long long x=0;
+    int counter=0;
+    //3.Binary to Decimal
+    for(int i=31;i>=0;i--)
+    {  x=x+arr_32[i]*pow(2,counter);
+        counter++;
+    }
+    return x;
+}
+class Solution {
+  public:
+    long long reversedBits(long long X) {
+        long long final=Binary(X);
+        return final;
+    }
+};
