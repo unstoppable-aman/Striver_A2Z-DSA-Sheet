@@ -1,0 +1,32 @@
+Given an integer, check whether it is a palindrome or not.
+
+Example 1:
+
+Input: n = 55555
+Output: Yes
+
+Example 2:
+
+Input: n = 123
+Output: No
+
+
+
+PROGRAM:
+
+string is_palindrome(int n)
+		{
+		    int rev=0;
+            int no=n;
+            int d=0;
+            while(n)
+            {
+                d=n%10;
+                rev=rev*10+d;
+                n=n/10;
+            }
+            if(no==rev)
+                return "Yes";
+            else
+                return "No";
+		}
