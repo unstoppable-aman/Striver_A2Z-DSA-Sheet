@@ -1,0 +1,23 @@
+PROGRAM:
+
+int Rev_S(string &s,int i)
+{   
+   if(i>=s.size()/2)
+        return 1;
+    if(s[i]!=s[s.size()-i-1])
+        return 0;
+    return Rev_S(s,i+1);
+    
+}
+class Solution{
+public:	
+	
+	
+	int isPalindrome(string S)
+	{   
+	    
+	    return Rev_S(S,0);
+	    
+	}
+
+};
