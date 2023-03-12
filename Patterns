@@ -331,30 +331,30 @@ int main() {
     //..22 Pattern
     
     /*
-    int n=4;
+    int n=9,i,j;
     int value;
-    vector<int> vec(7,0);
-    int lower=0,upper=7;
+    vector<int> vec(2*n-1,0);
+    int lower=0,upper=2*n-1;
     for(i=0;i<n;i++)
     {   value=n-i;
         for(j=lower;j<upper;j++)
             vec[j]=value;
-        for(j=0;j<7;j++)
+        for(j=0;j<2*n-1;j++)
             cout<<vec[j]<<" ";
         lower++;
         upper--;
         cout<<endl;
             
     }
-    n=4;
-    lower=2;
-    upper=4;
+    n=9;
+    lower=n-2;
+    upper=n;
     for(i=1;i<n;i++)
     {
         value=n-lower;
         for(j=lower;j<=upper;j++)
             vec[j]=value;
-        for(j=0;j<7;j++)
+        for(j=0;j<2*n-1;j++)
             cout<<vec[j]<<" ";
         lower--;
         upper++;
